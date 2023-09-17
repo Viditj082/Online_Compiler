@@ -14,7 +14,7 @@ export const cppController=(req,res)=>{
     const fileName=uuid();
 
     try {
-        fs.writeFileSync(`${fileName}.cpp`,code);
+        fs.writeFileSync(`test.cpp`,code);
         console.log(`A C++ File was created successfully.`);
         } catch (error) {
         console.error('Error creating the file:', error);
@@ -27,8 +27,8 @@ export const cppController=(req,res)=>{
     try 
       {
         console.log(process.cwd());
-        execSync(`g++ -o ${fileName} ${fileName}.cpp`);                       // generating executable file for the code
-        const result= execSync(`${fileName}.exe`,{input:inputs});      // executing .exe file 
+        execSync(`g++ -o test test.cpp`);                       // generating executable file for the code
+        const result= execSync(`test.exe`,{input:inputs});      // executing .exe file 
         console.log(result)
         res.send(result)
       } catch (error) 
@@ -38,8 +38,8 @@ export const cppController=(req,res)=>{
 
       // file deletion(.cpp)
 
-      console.log(`DELETING ${fileName}.cpp ..`);
-      fs.unlink(`${fileName}.cpp`, (err) => {
+      console.log(`DELETING test.cpp ..`);
+      fs.unlink(`test.cpp`, (err) => {
         if (err) {
           console.error('Error deleting file:', err);
         } else {
@@ -49,7 +49,7 @@ export const cppController=(req,res)=>{
       
       // .exe file deletion
 
-      fs.unlink(`${fileName}.exe`, (err) => {
+      fs.unlink(`test.exe`, (err) => {
         if (err) {
           console.error('Error deleting file:', err);
         } else {
