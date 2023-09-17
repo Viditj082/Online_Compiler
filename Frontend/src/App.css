@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  transition: 0.2s;
+}
+
+.run{
+  transition: 0.2s;
+  cursor: pointer;
+  border-radius:10px;
+  width: 80px;
+  background-color:#48b348;
+  color:white;
+  padding: 0.5rem;
+}
+
+.run:hover{
+  transform: scale(1.02);
+}
+
+/**/
+
+.container{
+  display:flex;
+  flex-direction: row;
+  height: 75vh;
+  margin-top: 50px;
+}
+
+.bottomContainer{
+  width: 200px;
+  flex:3;
+  display: flex;
+  flex-direction: column;
+}
+
+.boxes{
+  flex:3;
+  border:1px solid green;
+  text-align: start;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+  
+}
+
+.boxes>h3{
+ 
+  background-color:#00800060;
+  margin-top: 0;
+  padding: 1rem;
+  height: 25px;
+}
+
+.textArea
+{
+  margin-top: 0;
+  flex:8;
+  overflow:auto; 
+  padding:1rem;
+}
+
+.textArea:focus{
+  border: 1px solid #00800050;
+}
+
+.editor
+{
+  text-align: start;
+  overflow: auto;
+  flex: 6;
+  border: 1px solid green;
+  margin: 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.editorText
+{
+  border: none;
+  overflow:auto;
+  min-height: 100%;  
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
