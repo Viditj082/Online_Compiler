@@ -23,11 +23,10 @@ function App() {
 
     setLoading(true)
 
-    // setTimeout(()=>{},1000);
-    // http://localhost:5000                  -->local
-    // https://debugger-api.onrender.com      -->web service
+    // http://localhost:5000                         -->local
+    // https://debugger-backend-latest.onrender.com  -->web service
 
-     axios.post(`http://localhost:5000/run/${language}`,{
+     axios.post(`https://debugger-backend-latest.onrender.com/run/${language}`,{
         input:input,
         code:code
      }).then((res)=>{
@@ -37,7 +36,6 @@ function App() {
       console.log(str+ "  :op")
       setOutput(str) 
       setLoading(false)
-      // console.log(response)
      }).catch((error)=>{
         setLoading(false)
         setOutput(error.toString())

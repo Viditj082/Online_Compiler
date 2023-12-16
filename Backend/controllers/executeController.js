@@ -1,20 +1,26 @@
 
 import fs from 'fs';
 import { execSync } from 'child_process'
+;import {spawn} from 'child_process';
 import bodyParser from 'body-parser';
 import {v4 as uuid} from 'uuid';
+import random from 'randomstring';
+
+const fileNamelength=8;
+
 
 export const cppController=(req,res)=>{
   
     const inputs=req.body.input;
-    const code=req.body.code;
+    const code=req.body.code; 
 
     // file generation
 
-    const fileName=uuid();
+    const fileName=random.generate(fileNamelength);
+    console.log(fileName);
 
     try {
-        fs.writeFileSync(`test.cpp`,code);
+        fs.writeFileSync(`${fileName}.cpp`,code);
         console.log(`A C++ File was created successfully.`);
         } catch (error) {
         console.error('Error creating the file:', error);
@@ -27,8 +33,8 @@ export const cppController=(req,res)=>{
     try 
       {
         console.log(process.cwd());
-        execSync(`g++ -o test test.cpp`);                       // generating executable file for the code
-        const result= execSync(`test.exe`,{input:inputs});      // executing .exe file 
+        execSync(`g++ -o ${fileName} ${fileName}.cpp`);                // generating executable file for the code
+        const result= execSync(`./${fileName}`,{input:inputs});      // executing .exe file 
         console.log(result)
         res.send(result)
       } catch (error) 
@@ -39,7 +45,7 @@ export const cppController=(req,res)=>{
       // file deletion(.cpp)
 
       console.log(`DELETING test.cpp ..`);
-      fs.unlink(`test.cpp`, (err) => {
+      fs.unlink(`${fileName}.cpp`, (err) => {
         if (err) {
           console.error('Error deleting file:', err);
         } else {
@@ -49,7 +55,7 @@ export const cppController=(req,res)=>{
       
       // .exe file deletion
 
-      fs.unlink(`test.exe`, (err) => {
+      fs.unlink(`./${fileName}`, (err) => {
         if (err) {
           console.error('Error deleting file:', err);
         } else {
@@ -58,7 +64,6 @@ export const cppController=(req,res)=>{
       });
 
 }
-
 
 export const  JavaController=(req,res)=>{
     const inputs=req.body.input;
@@ -116,6 +121,7 @@ export const pythonController=(req,res)=>{
   const inputs=req.body.input;
   const code=req.body.code;
   const fileName=uuid();
+  
 
   // file generation
 
@@ -133,7 +139,7 @@ export const pythonController=(req,res)=>{
 
   try {
      // generating executable file for the code
-      const result= execSync(`python ${fileName}.py`,{input:inputs});  // executing .exe file 
+      const result= execSync(`python3 ${fileName}.py`,{input:inputs});  // executing .exe file 
       console.log(result)
       res.send(result)
     } catch (error) {
