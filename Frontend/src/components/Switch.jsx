@@ -57,6 +57,6 @@ export default function Switch_n() {
   const {theme,setTheme}=useContext(AppContext);
 
   return (
-    <MaterialUISwitch onChange={()=>{setTheme(!theme)}}/>
+    <MaterialUISwitch className='switch' onChange={()=>{setTheme(!theme)}}/>
   )
 }

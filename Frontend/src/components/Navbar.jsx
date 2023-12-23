@@ -27,13 +27,13 @@ export default function Navbar() {
 
   return (
 
-    <AppBar position="static" style={{padding:'0.5rem 1rem',background:'#161616'} }>
+    <AppBar position="static" style={{padding:'0.5rem 1rem',background:'#161616',height:'10vh'} }>
           <Toolbar>
-          <img src={require('../logo-no-background.png')} style={{width:'250px',height:'40px'}}/>
+          <img  className='logo' src={require('../logo-no-background.png')}/>
           
-          <Switch_n/>
+          <Switch_n className='switch'/>
 
-          <Select style={{color:'white',marginLeft:'auto',fontSize:'15px',fontStyle:'bold'}} 
+          <Select className='lang_menu' style={{color:'white',marginLeft:'auto',fontSize:'15px',fontStyle:'bold'}} 
           value={language}
           label="Language"
           onChange={handleChange}
@@ -45,7 +45,7 @@ export default function Navbar() {
 
         </Select>
         
-        <img src={require(`${Icons.get(`${language}`)}`)} style={{width:'40px',height:'40px',marginLeft:'5px'}}/>
+        <img className='lang_icon' src={require(`${Icons.get(`${language}`)}`)} />
         </Toolbar>
     </AppBar>
   )

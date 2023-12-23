@@ -26,11 +26,10 @@ function App() {
     // http://localhost:5000                         -->local
     // https://debugger-backend-latest.onrender.com  -->web service
 
-     axios.post(`https://debugger-backend-latest.onrender.com/run/${language}`,{
+     axios.post(`http://localhost:5000/run/${language}`,{
         input:input,
         code:code
      }).then((res)=>{
-
       const response=res.data.toString();
       const str=response.replace('\r\n','\n')
       console.log(str+ "  :op")
@@ -62,6 +61,7 @@ function App() {
     <Editor_s/>
    
     </div>
+    
     <button  className='run' onClick={HandleClick} style={loading===true?{pointerEvents:'none',opacity:0.5}:{pointerEvents:'visible',opacity:1}}> Run 🏃‍♂️</button>
     </div>
     
