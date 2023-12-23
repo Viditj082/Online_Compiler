@@ -26,7 +26,7 @@ function App() {
     // http://localhost:5000                         -->local
     // https://debugger-backend-latest.onrender.com  -->web service
 
-     axios.post(`http://localhost:5000/run/${language}`,{
+     axios.post(`https://debugger-backend-latest.onrender.com/run/${language}`,{
         input:input,
         code:code
      }).then((res)=>{
