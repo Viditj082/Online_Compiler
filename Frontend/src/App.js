@@ -53,7 +53,7 @@ function App() {
 }
     <div className='container'>
     
-    <div className='bottomContainer'>
+    <div className='bottomContainer' style={theme===false?{background:'white'}:{background:'#1D1E22'}}>
     <Input/>
     <Output/>
     </div>

@@ -153,11 +153,6 @@
 
 }
 
- .lang_menu
- {
-   width: 50px;
- }
-
 .lang_icon
   {
     width: 40px;
@@ -176,6 +171,7 @@
   {
     width: 30px;
     height: 30px;
+    margin-left: 10px;
   }
 
 }
