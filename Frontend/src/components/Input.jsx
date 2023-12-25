@@ -4,7 +4,7 @@ import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
 import CircularProgress from '@mui/material/CircularProgress';
-import { useContext, useState } from "react"
+import { useContext, useState} from "react"
 import { AppContext } from "../context"
 import {memo} from 'react';
 

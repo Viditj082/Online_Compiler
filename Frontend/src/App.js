@@ -8,7 +8,8 @@ import Navbar from './components/Navbar';
 import { AppContext } from './context';
 import Editor_s from './components/Editor';
 import LinearProgress from '@mui/material/LinearProgress';
-
+import Savecode_input
+ from './components/Savecode_input';
 function App() {
   
   const [code,setCode]=useState('#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\ncout<<"Hello World";\nreturn 0;\n}');
@@ -63,6 +64,11 @@ function App() {
     </div>
     
     <button  className='run' onClick={HandleClick} style={loading===true?{pointerEvents:'none',opacity:0.5}:{pointerEvents:'visible',opacity:1}}> Run 🏃‍♂️</button>
+
+    <button onClick={()=>{
+      const array=JSON.parse(localStorage.getItem("saved_codes"));
+      array.map(e=>console.log(e.code))
+    }}>Get</button>
     </div>
     
     </AppContext.Provider>

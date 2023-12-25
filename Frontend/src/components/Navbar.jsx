@@ -41,7 +41,7 @@ export default function Navbar() {
           <MenuItem value='cpp'>C++</MenuItem>
           <MenuItem value='Java'>Java</MenuItem>
           <MenuItem value='python'>Python</MenuItem>
-          <MenuItem value='js'>JavaScript</MenuItem>
+          <MenuItem value='js'>Js</MenuItem>
 
         </Select>
         

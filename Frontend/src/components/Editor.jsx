@@ -18,6 +18,7 @@ import { githubLight, githubLightInit, githubDark, githubDarkInit } from '@uiw/c
 // import { basicSetup, minimalSetup } from '@uiw/codemirror-extensions-basic-setup';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import Savecode_input from './Savecode_input';
 
 export default function Editor_s() {
     
@@ -33,7 +34,8 @@ export default function Editor_s() {
      
   return (
     <div className="editor"> 
-
+      
+    <Savecode_input style={{marginLeft:'auto',color:theme===false?'black':'#01FF70'}}>Save code</Savecode_input>
     <Select color="success" style={{marginLeft:'auto',color:theme===false?'black':'#01FF70'}}
     value={editorTheme}
     label="Theme"
