@@ -178,6 +178,19 @@
 
 .list-item
 {
+  position: relative;
   border:'1px solid rgb(25,118,210)'
+}
+
+.deleteIcon
+{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  transition: 0.2s;
+}
+
+.deleteIcon:hover{
+  color:#e23a3a
 }
 

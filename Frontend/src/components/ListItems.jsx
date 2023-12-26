@@ -10,11 +10,13 @@ import CodeMirror from '@uiw/react-codemirror';
 import { AppContext } from '../context';
 import { useContext } from 'react';
 
-export default function ListItems({title,code,lang}) {
+import DeleteIcon from '@mui/icons-material/Delete';
+
+export default function ListItems({id,title,code,lang,items,setItems}) {
 
     const [open,setOpen]=useState(false);
     const {theme}=useContext(AppContext);
-
+   
     const click=()=>{
         setOpen(
             ()=>{
@@ -23,6 +25,15 @@ export default function ListItems({title,code,lang}) {
             }
         )
     }
+
+    const handleDelete=(e)=>{
+      
+        const newArray=items.filter(item=>item.id!==id);
+        setItems(newArray);
+        localStorage.setItem("saved_codes",JSON.stringify(newArray));
+
+    }
+
   return (
     <div className='list-item' style={{border:'0.2ch solid rgb(25,118,210)', transition:'0.2s',paddingLeft:'10px'}} onMouseEnter={(e)=>{
         e.target.style.transform='scale(1.01)'
@@ -33,6 +44,7 @@ export default function ListItems({title,code,lang}) {
 
             {open ? <ExpandLess /> : <ExpandMore />}
             <img className='lang_icon' src={require(`${Icons.get(`${lang}`)}`)} style={{width:'30px', height:'30px'}} />
+            <DeleteIcon onClick={handleDelete} className='deleteIcon' style={{marginLeft:'auto'}}/>
             </span>
           </ListItem>
           <Collapse in={open} timeout="auto" unmountOnExit>

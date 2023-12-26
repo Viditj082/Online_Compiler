@@ -16,9 +16,11 @@ import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
 
+import { v4 as uuidv4 } from 'uuid';
+
 export default function Savecode_input() {
     
-    const {code,language}=useContext(AppContext);
+    const {code,language,theme}=useContext(AppContext);
     const [title,setTitle]=useState();
 
     const [open, setOpen] = useState(false);
@@ -38,7 +40,7 @@ export default function Savecode_input() {
       
       setOpen(false);
       
-      const obj={title:title,lang:language,code:code};
+      const obj={id:uuidv4(),title:title,lang:language,code:code};
       const oldvalue=localStorage.getItem("saved_codes");
       const oldArray=JSON.parse(oldvalue);
 
@@ -49,7 +51,7 @@ export default function Savecode_input() {
       }
       else
       {
-      const newArray=[...oldArray,obj];
+      const newArray=[obj,...oldArray];
       localStorage.setItem("saved_codes",JSON.stringify(newArray));
       }
     
@@ -60,7 +62,7 @@ export default function Savecode_input() {
         <Button variant="outlined" onClick={handleClickOpen}>
           Save code
         </Button>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose}  style={{backdropFilter:'blur(2px)'}}>
           <DialogTitle>Template Creation</DialogTitle>
           <DialogContent>
             <DialogContentText>

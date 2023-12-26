@@ -11,7 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import Card from './Card';
 import { useEffect } from 'react';
 import {Collapse } from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
@@ -21,6 +20,7 @@ import ListItems from './ListItems';
 import { AppContext } from '../context';
 import { useContext } from 'react';
 import Tooltip from '@mui/material/Tooltip';
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -32,21 +32,22 @@ export default function Template() {
   const {theme}=useContext(AppContext);
 
   const handleClickOpen = () => {
-
     setOpen(true);
     const arrayData=localStorage.getItem("saved_codes");
     const array=JSON.parse(arrayData);
     setItems(array);
-
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  const deleteAll = () => {
+       localStorage.setItem("saved_codes","[]");
+       setItems([]);
+  }
   
   const [items,setItems]=React.useState([]);
-
-  
 
   return (
     <React.Fragment >
@@ -54,16 +55,16 @@ export default function Template() {
       <Tooltip title='View your saved templates'>
       <Button variant="text" onClick={handleClickOpen} className='saved-button' style={{fontSize:'10px'}}>
        View Saved Templates
-        
       </Button>
       </Tooltip>
-      <Dialog
-        
+
+      <Dialog style={theme==0?{background:'white'}:{background:'#1D1E22',color:'white'}}
         fullScreen
         open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
       >
+
         <AppBar sx={{ position: 'relative' }}>
           <Toolbar>
             <IconButton
@@ -78,13 +79,15 @@ export default function Template() {
               Saved Templates
             </Typography>
             
+            <Button variant='outlined' style={{color:'white',border:'1px solid white',fontSize:'10px'}} onClick={deleteAll}>Delete all</Button>
+
           </Toolbar>
         </AppBar>
 
         <List style={theme==0?{background:'white'}:{background:'#1D1E22',color:'white'}}>
-          {items.map(item=>{
+          {items===null?null:items.map(item=>{
             return (
-              <ListItems title={item.title} code={item.code} lang={item.lang}/>
+              <ListItems id={item.id} title={item.title} code={item.code} lang={item.lang} items={items} setItems={setItems}/>
             )
           })}
         </List>
