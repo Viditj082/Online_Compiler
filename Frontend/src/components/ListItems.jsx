@@ -5,12 +5,14 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Icons from '../Iconpaths';
 import ListItemText from '@mui/material/ListItemText';
 import ListItem from '@mui/material/ListItem';
-
 import CodeMirror from '@uiw/react-codemirror';
 import { AppContext } from '../context';
 import { useContext } from 'react';
-
 import DeleteIcon from '@mui/icons-material/Delete';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import Tooltip from '@mui/material/Tooltip';
+
+
 
 export default function ListItems({id,title,code,lang,items,setItems}) {
 
@@ -35,27 +37,39 @@ export default function ListItems({id,title,code,lang,items,setItems}) {
     }
 
   return (
-    <div className='list-item' style={{border:'0.2ch solid rgb(25,118,210)', transition:'0.2s',paddingLeft:'10px'}} onMouseEnter={(e)=>{
-        e.target.style.transform='scale(1.01)'
-    }} onMouseLeave={(e)=>{
-        e.target.style.transform='scale(1)'}}>
+  //   onMouseEnter={(e)=>{
+  //     e.target.style.transform='scale(1.01)'
+  // }} onMouseLeave={(e)=>{
+  //     e.target.style.transform='scale(1)'}}
+    <div className='list-item' style={{border:'0.2ch solid rgb(25,118,210)', transition:'0.2s',paddingLeft:'10px'}}>
         <ListItem button onClick={click} > 
-            <span><ListItemText primary={title} style={{fontWeight:'bold'}}/>
+
+            <span>
+              
+            <ListItemText primary={title} style={{fontWeight:'bold'}}/>
 
             {open ? <ExpandLess /> : <ExpandMore />}
+
             <img className='lang_icon' src={require(`${Icons.get(`${lang}`)}`)} style={{width:'30px', height:'30px'}} />
+            <Tooltip title='Copy to clipboard'>
+            <ContentCopyIcon text={code} style={{marginLeft:'auto'}} className='copyIcon' onClick={()=>{
+              navigator.clipboard.writeText(code).then(()=>{
+
+                
+
+              }).catch(err=>console.log(err));
+            }}/>
+            </Tooltip>
+            <Tooltip title='Delete this template'>
             <DeleteIcon onClick={handleDelete} className='deleteIcon' style={{marginLeft:'auto'}}/>
+            </Tooltip>
+
             </span>
+
           </ListItem>
+
           <Collapse in={open} timeout="auto" unmountOnExit>
         <div>
-        {/* <Editor className='editorText' style={{maxHeight:'300px', overflow:'auto', border:'none'}}
-        value={code}
-        onValueChange={()=>{}}
-        highlight={code => highlight(code,languages.js)}
-        padding={20}
-    
-    /> */}
 
 <CodeMirror
 editable='false'

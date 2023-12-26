@@ -49,6 +49,7 @@ function App() {
     
     <AppContext.Provider value={{code,setCode,input,setInput,output,setOutput,loading,setLoading,language,setLanguage,theme,setTheme}}>
     <div className='App' style={theme===false?{background:'white'}:{background:'#1D1E22',color:'white'}}>
+   
     <Navbar/>
     
     {loading &&  <LinearProgress color="secondary" />
@@ -65,8 +66,9 @@ function App() {
     </div>
     
     <button  className='run' onClick={HandleClick} style={loading===true?{pointerEvents:'none',opacity:0.5}:{pointerEvents:'visible',opacity:1}}> Run 🏃‍♂️</button>
-    
+  
     <Templates/>
+
     </div>
     
     </AppContext.Provider>

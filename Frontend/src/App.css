@@ -191,6 +191,20 @@
 }
 
 .deleteIcon:hover{
-  color:#e23a3a
+  color:#e74444;
+  transform: scale(1.1);
 }
 
+.copyIcon
+{
+  position: absolute;
+  right: 50px;
+  bottom: 10px;
+  transition: 0.2s;
+}
+
+.copyIcon:hover
+{
+  color:'red';
+  transform: scale(1.04);
+}
