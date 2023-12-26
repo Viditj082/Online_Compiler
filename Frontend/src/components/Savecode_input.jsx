@@ -56,7 +56,7 @@ export default function Savecode_input() {
     };
   
     return (
-      <>
+      <div style={{marginLeft:'auto'}}>
         <Button variant="outlined" onClick={handleClickOpen}>
           Save code
         </Button>
@@ -85,10 +85,12 @@ export default function Savecode_input() {
 <h2>Code:</h2>
 <Editor className='editorText'
         value={code}
+        onValueChange={()=>{}}
         contentEditable={false}
         highlight={code => highlight(code,languages.js)}
         padding={20}
         placeholder={"Enter Input.."}
+  
     />
             
 
@@ -99,6 +101,6 @@ export default function Savecode_input() {
           </DialogActions>
         
         </Dialog>
-      </>
+      </div>
     );
   }

@@ -8,6 +8,7 @@ import { AppContext } from "../context"
 import map from '../BoilerPlates';
 import Icons from '../Iconpaths';
 import Switch_n from './Switch';
+import Templates from './Templates';
 
 export default function Navbar() {
 
@@ -32,6 +33,8 @@ export default function Navbar() {
           <img  className='logo' src={require('../logo-no-background.png')}/>
           
           <Switch_n className='switch'/>
+
+          {/* <Templates/> */}
 
           <Select className='lang_menu' style={{color:'white',marginLeft:'auto',fontSize:'15px',fontStyle:'bold'}} 
           value={language}

@@ -22,7 +22,6 @@ import Savecode_input from './Savecode_input';
 
 export default function Editor_s() {
     
-    console.log('editor')
 
     const {code,setCode,theme,setTheme}=useContext(AppContext);
     const [editorTheme,setEditorTheme]=useState('vscode');
@@ -45,7 +44,7 @@ export default function Editor_s() {
     <MenuItem value={'Github Dark'}>Github Dark</MenuItem>
     <MenuItem value={'vscode'}>Vscode</MenuItem>
   </Select>
-
+ 
     <CodeMirror
      onChange={onChange}
      value={code}
